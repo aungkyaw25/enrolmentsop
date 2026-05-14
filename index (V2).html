@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>White Card Course – Enrolment SOP</title>
+<style>
+  /* ---------- Base ---------- */
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #fafbfc;
+    --ink: #14181f;
+    --ink-2: #3a4250;
+    --muted: #6a7282;
+    --line: #e3e6eb;
+    --line-2: #eef0f3;
+    --accent: #2f5fd7;
+    --accent-soft: #e7eefb;
+    --good: #1f7a4d;
+    --good-soft: #e2f3ea;
+    --warn: #a85a00;
+    --warn-soft: #fcefdc;
+    --danger: #b3261e;
+    --danger-soft: #fbe4e2;
+    --purple: #5b3da6;
+    --purple-soft: #ece6f8;
+    --teal: #0a6f78;
+    --teal-soft: #def1f2;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 1px 2px rgba(15,20,30,0.04), 0 1px 0 rgba(15,20,30,0.02);
+    --shadow-lg: 0 4px 14px rgba(15,20,30,0.07), 0 1px 0 rgba(15,20,30,0.03);
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  body { font-size: 14.5px; line-height: 1.5; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3, h4 { margin: 0; color: var(--ink); }
+  h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  h3 { font-size: 15px; font-weight: 600; }
+  p { margin: 0; }
+
+  /* ---------- Layout ---------- */
+  .app {
+    display: grid;
+    grid-template-columns: 264px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px 14px 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px 18px;
+    border-bottom: 1px solid var(--line-2);
+    margin-bottom: 14px;
+  }
+  .brand-mark {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    background: var(--ink);
+    color: #fff;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: -0.02em;
+  }
+  .brand-text { line-height: 1.15; }
+  .brand-text .t1 { font-weight: 600; font-size: 13.5px; }
+  .brand-text .t2 { color: var(--muted); font-size: 11.5px; font-family: var(--mono); }
+
+  nav.nav { display: flex; flex-direction: column; gap: 1px; }
+  .nav-label {
+    padding: 12px 10px 6px;
+    color: var(--muted);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  nav.nav a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    color: var(--ink-2);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    line-height: 1.3;
+  }
+  nav.nav a:hover { background: var(--surface-2); text-decoration: none; }
+  nav.nav a.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  nav.nav a .ico {
+    width: 18px; text-align: center; color: var(--muted); font-size: 14px;
+  }
+  nav.nav a.active .ico { color: var(--accent); }
+
+  .sidebar-foot {
+    margin-top: 18px;
+    padding: 12px 10px;
+    border-top: 1px solid var(--line-2);
+    color: var(--muted);
+    font-size: 11.5px;
+    font-family: var(--mono);
+  }
+
+  /* ---------- Main ---------- */
+  main.main { min-width: 0; }
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(245,246,248,0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+  .search {
+    position: relative;
+    max-width: 540px;
+  }
+  .search input {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-size: 13.5px;
+    font-family: var(--sans);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .search input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .search .search-ico {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 14px;
+  }
+  .search .search-hint {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 11px; font-family: var(--mono);
+    background: var(--surface-2); border: 1px solid var(--line-2);
+    padding: 1px 6px; border-radius: 4px;
+  }
+  .top-actions { display: flex; align-items: center; gap: 8px; }
+  .btn {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 7px 12px; border-radius: 7px; cursor: pointer;
+    font-family: var(--sans); font-size: 13px; color: var(--ink-2);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: background .15s, border-color .15s;
+  }
+  .btn:hover { background: var(--surface-2); }
+  .btn-primary {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+  .btn-primary:hover { background: #000; }
+  .btn-ghost {
+    background: transparent; border-color: transparent; color: var(--muted);
+  }
+  .btn-ghost:hover { color: var(--ink); }
+
+  .content { padding: 28px; max-width: 1180px; }
+
+  /* ---------- Confidentiality bar ---------- */
+  .compliance-banner {
+    background: var(--warn-soft);
+    border: 1px solid #f1d3a3;
+    color: #6b3a00;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 22px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .compliance-banner .ico { font-size: 16px; }
+  .compliance-banner strong { font-weight: 600; }
+
+  /* ---------- Section ---------- */
+  section.section {
+    margin-bottom: 36px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 16px; margin-bottom: 14px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-header .title { display: flex; align-items: center; gap: 10px; }
+  .section-header .title .sec-ico {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--surface); border: 1px solid var(--line);
+    display: grid; place-items: center; font-size: 14px; color: var(--ink-2);
+  }
+  .section-header .subtitle { color: var(--muted); font-size: 12.5px; margin-top: 2px; font-family: var(--mono); }
+
+  /* ---------- Cards / Grid ---------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .grid { display: grid; gap: 14px; }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  /* ---------- Overview ---------- */
+  .doc-meta {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--line-2);
+    border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .doc-meta .cell {
+    background: var(--surface); padding: 14px 16px;
+  }
+  .doc-meta .cell .k { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 600; }
+  .doc-meta .cell .v { font-size: 13.5px; color: var(--ink); }
+
+  .summary-grid { margin-top: 14px; }
+  .summary-card { padding: 18px; }
+  .summary-card .lbl { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 6px; }
+  .summary-card p { color: var(--ink-2); font-size: 13.5px; }
+
+  /* ---------- Phase cards ---------- */
+  .phase-cards { margin-top: 18px; }
+  .phase-card {
+    padding: 18px; cursor: pointer; transition: transform .15s, box-shadow .15s, border-color .15s;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative; overflow: hidden;
+  }
+  .phase-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+  }
+  .phase-card .phase-tag {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .phase-card h3 { font-size: 17px; }
+  .phase-card .phase-desc { color: var(--ink-2); font-size: 13px; }
+  .phase-card .phase-foot {
+    margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+    padding-top: 10px; border-top: 1px dashed var(--line-2);
+    color: var(--muted); font-size: 12px;
+  }
+  .phase-card .phase-num {
+    position: absolute; right: -8px; top: -16px;
+    font-size: 80px; font-weight: 700; color: var(--line-2);
+    line-height: 1; font-family: var(--mono); letter-spacing: -0.04em;
+    pointer-events: none;
+  }
+  .phase-card .phase-go { color: var(--accent); font-weight: 500; }
+
+
+  /* ---------- Compact virtual roadmap ---------- */
+  .roadmap-shell {
+    margin-top: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .roadmap-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #fff 0%, #fbfcff 100%);
+  }
+  .roadmap-head h3 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+  .roadmap-head p {
+    color: var(--muted);
+    font-size: 12.5px;
+    max-width: 720px;
+  }
+  .roadmap-mini-note {
+    font-family: var(--mono);
+    color: var(--muted);
+    font-size: 11px;
+    background: var(--surface-2);
+    border: 1px solid var(--line-2);
+    padding: 5px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .roadmap-lanes {
+    padding: 14px;
+    display: grid;
+    gap: 12px;
+  }
+  .roadmap-lane {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+  .lane-label {
+    border-radius: 10px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 72px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+  }
+  .lane-label .phase {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .lane-label .name {
+    font-size: 14px;
+    font-weight: 650;
+    margin-top: 3px;
+  }
+  .lane-label.enrolment { background: var(--purple-soft); border-color: #d6c9ef; color: var(--purple); }
+  .lane-label.processing { background: var(--teal-soft); border-color: #b8dfe2; color: var(--teal); }
+  .lane-label.submission { background: var(--good-soft); border-color: #c4e6d2; color: var(--good); }
+  .roadmap-nodes {
+    display: grid;
+    gap: 8px;
+  }
+  .roadmap-nodes.enrolment { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .roadmap-nodes.processing { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .roadmap-nodes.submission { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roadmap-node {
+    cursor: pointer;
+    text-align: left;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 10px;
+    min-height: 72px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 8px;
+    align-items: start;
+    transition: transform .15s, box-shadow .15s, border-color .15s, background .15s, opacity .15s;
+    font-family: var(--sans);
+    color: var(--ink);
+  }
+  .roadmap-node:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  .roadmap-node.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft) inset, var(--shadow-lg);
+    background: #fbfdff;
+  }
+  .roadmap-node.dimmed { opacity: 0.38; }
+  .node-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+  }
+  .roadmap-node.active .node-num {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .node-title {
+    font-weight: 650;
+    font-size: 12.5px;
+    line-height: 1.25;
+  }
+  .node-owner {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    margin-top: 4px;
+  }
+  .roadmap-detail {
+    border-top: 1px solid var(--line);
+    background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
+    padding: 16px 18px 18px;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, .8fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .detail-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .detail-kicker {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 3px;
+  }
+  .detail-title-row h3 {
+    font-size: 18px;
+  }
+  .detail-summary {
+    color: var(--ink-2);
+    font-size: 13.5px;
+    margin: 8px 0 12px;
+  }
+  .detail-list {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-2);
+    font-size: 13px;
+  }
+  .detail-list li { margin-bottom: 5px; }
+  .detail-side {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+    display: grid;
+    gap: 10px;
+  }
+  .detail-side .mini {
+    display: grid;
+    gap: 3px;
+  }
+  .detail-side .k {
+    font-size: 10.5px;
+    font-family: var(--mono);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .detail-side .v {
+    font-size: 13px;
+    color: var(--ink-2);
+  }
+  .detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .phase-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    border: 1px solid var(--line);
+  }
+  .phase-chip.enrolment { background: var(--purple-soft); color: var(--purple); border-color: #d6c9ef; }
+  .phase-chip.processing { background: var(--teal-soft); color: var(--teal); border-color: #b8dfe2; }
+  .phase-chip.submission { background: var(--good-soft); color: var(--good); border-color: #c4e6d2; }
+  .badge.role-australia { background: var(--teal-soft); color: var(--teal); border-color: #b6dde0; }
+  .badge.role-trainer { background: #eef5fb; color: var(--accent); border-color: #cbdaf5; }
+  .badge.role-accounting { background: var(--good-soft); color: var(--good); border-color: #c4e6d2; }
+  .badge.role-maria { background: var(--purple-soft); color: var(--purple); border-color: #d5cbed; }
+
+  /* ---------- Role filter ---------- */
+  .role-bar {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    background: var(--surface);
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    align-items: center;
+  }
+  .role-bar .lbl { padding: 0 8px 0 4px; color: var(--muted); font-size: 12px; font-family: var(--mono); }
+  .role-pill {
+    background: transparent; border: 1px solid transparent;
+    padding: 5px 11px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; color: var(--ink-2);
+    font-family: var(--sans);
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .role-pill:hover { background: var(--surface-2); }
+  .role-pill.active {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+  .role-pill .dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--muted); margin-right: 6px; vertical-align: middle;
+  }
+  .role-pill[data-role="rto"] .dot { background: var(--accent); }
+  .role-pill[data-role="enrolment"] .dot { background: var(--good); }
+  .role-pill[data-role="yoko"] .dot { background: var(--purple); }
+  .role-pill[data-role="thai"] .dot { background: var(--teal); }
+  .role-pill[data-role="ops"] .dot { background: var(--warn); }
+
+  /* ---------- Step cards ---------- */
+  .steps { display: flex; flex-direction: column; gap: 10px; }
+  .step {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    transition: border-color .15s, box-shadow .15s, background .15s, opacity .15s;
+  }
+  .step.dimmed { opacity: 0.35; }
+  .step.role-hi {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft) inset;
+  }
+  .step.hidden { display: none; }
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-2);
+    font-weight: 600;
+  }
+  .step-body { min-width: 0; }
+  .step-body .action {
+    font-size: 14.5px; color: var(--ink); margin-bottom: 8px;
+    font-weight: 500;
+    text-wrap: pretty;
+  }
+  .step-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 10px;
+    color: var(--muted); font-size: 12px;
+  }
+  .step-meta .meta {
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .step-meta .meta .k { font-family: var(--mono); font-size: 11px; }
+  .step-check {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .step-check input[type="checkbox"] {
+    width: 18px; height: 18px; cursor: pointer;
+    accent-color: var(--ink);
+  }
+  .step-check label {
+    font-size: 11.5px; color: var(--muted); font-family: var(--mono);
+    cursor: pointer; user-select: none;
+  }
+  .step.checked .action { color: var(--muted); }
+  .step.checked .action { text-decoration: line-through; text-decoration-color: var(--line); }
+
+  /* ---------- Badges ---------- */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 11.5px; font-weight: 500;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .badge.role-rto { background: var(--accent-soft); color: var(--accent); border-color: #cbdaf5; }
+  .badge.role-enrolment { background: var(--good-soft); color: var(--good); border-color: #c4e6d2; }
+  .badge.role-yoko { background: var(--purple-soft); color: var(--purple); border-color: #d5cbed; }
+  .badge.role-thai { background: var(--teal-soft); color: var(--teal); border-color: #b6dde0; }
+  .badge.role-ops { background: var(--warn-soft); color: var(--warn); border-color: #f0d3a3; }
+  .badge.time { background: var(--surface-2); color: var(--ink-2); border-color: var(--line); font-family: var(--mono); font-size: 11px; }
+  .badge.timing-t24 { background: #fef1f1; color: var(--danger); border-color: #f3cfcf; font-family: var(--mono); }
+  .badge.timing-pre { background: #eef5fb; color: var(--accent); border-color: #cbdaf5; font-family: var(--mono); }
+
+  /* ---------- Owners list ---------- */
+  .roles-grid { gap: 12px; }
+  .role-card { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .role-card .role-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .role-card .role-head h3 { font-size: 14.5px; }
+  .role-card .resp { color: var(--ink-2); font-size: 13px; }
+  .role-card .resp li { margin-bottom: 3px; }
+
+  /* ---------- T-24h handover ---------- */
+  .handover {
+    background: linear-gradient(180deg, #fff 0%, #fdfafa 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0;
+    overflow: hidden;
+  }
+  .handover-head {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  .handover-head .ttl { display: flex; align-items: center; gap: 10px; }
+  .handover-head h3 { font-size: 15px; }
+  .handover-head .sub { color: var(--muted); font-size: 12px; font-family: var(--mono); margin-top: 2px; }
+  .handover-progress {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; color: var(--muted); font-family: var(--mono);
+  }
+  .progress-track {
+    width: 120px; height: 6px; background: var(--line-2); border-radius: 999px; overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: var(--ink); width: 0%; transition: width .25s; }
+
+  .artefact-list { padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .artefact {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 8px;
+    gap: 12px;
+    transition: background .15s;
+  }
+  .artefact:hover { background: var(--surface-2); }
+  .artefact input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--ink); cursor: pointer; }
+  .artefact .ar-body .name { font-size: 13.5px; color: var(--ink); font-weight: 500; }
+  .artefact .ar-body .filename { font-size: 11.5px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
+  .artefact .ar-body .desc { font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+  .artefact.checked .name { text-decoration: line-through; color: var(--muted); }
+  .artefact .file-pill {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    background: var(--surface-2); border: 1px solid var(--line-2);
+    padding: 3px 8px; border-radius: 4px;
+  }
+
+  /* ---------- Escalation ladder ---------- */
+  .ladder { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .rung {
+    display: grid;
+    grid-template-columns: 64px 1fr 200px;
+    gap: 16px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    align-items: center;
+    position: relative;
+  }
+  .rung .level {
+    display: grid; place-items: center;
+    width: 52px; height: 52px;
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+  }
+  .rung[data-l="1"] .level { background: #6a7282; }
+  .rung[data-l="2"] .level { background: var(--accent); }
+  .rung[data-l="3"] .level { background: var(--warn); }
+  .rung[data-l="4"] .level { background: #c4501f; }
+  .rung[data-l="5"] .level { background: var(--danger); }
+  .rung h4 { font-size: 14px; margin-bottom: 4px; }
+  .rung .when { color: var(--ink-2); font-size: 13px; }
+  .rung .sla {
+    font-family: var(--mono); font-size: 12px; color: var(--ink-2);
+    background: var(--surface-2); border: 1px solid var(--line-2);
+    padding: 8px 10px; border-radius: 8px; text-align: left;
+  }
+  .rung .sla .k { color: var(--muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .triggers { margin-top: 18px; }
+  .trigger-card { padding: 14px; }
+  .trigger-card .trig-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+  .trigger-card .trig-num {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  .trigger-card .trig-when {
+    color: var(--ink); font-size: 13.5px; margin-bottom: 8px;
+    text-wrap: pretty;
+  }
+  .trigger-card .trig-foot {
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    font-size: 12px; color: var(--muted);
+    border-top: 1px dashed var(--line-2); padding-top: 8px;
+  }
+
+  /* ---------- Tools & templates ---------- */
+  .tools-list { padding: 4px; }
+  .tool {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    align-items: center;
+  }
+  .tool:hover { background: var(--surface-2); }
+  .tool + .tool { border-top: 1px solid var(--line-2); }
+  .tool .tool-ico {
+    width: 30px; height: 30px; border-radius: 7px;
+    background: var(--surface-2); border: 1px solid var(--line);
+    display: grid; place-items: center; font-size: 14px; color: var(--ink-2);
+  }
+  .tool .name { font-size: 13.5px; color: var(--ink); font-weight: 500; }
+  .tool .desc { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+  /* ---------- Records ---------- */
+  .records-grid { gap: 12px; }
+  .record-card { padding: 16px; }
+  .record-card h3 { font-size: 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;}
+  .record-card p { color: var(--ink-2); font-size: 13px; }
+
+  /* ---------- Approval ---------- */
+  .approval { padding: 18px; }
+  .approval .row { display: grid; grid-template-columns: 200px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+  .approval .row:last-child { border-bottom: none; }
+  .approval .k { color: var(--muted); font-size: 12.5px; font-family: var(--mono); }
+  .approval .v { color: var(--ink); font-size: 13.5px; }
+
+  /* ---------- Helpers ---------- */
+  .sub-title {
+    font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); font-weight: 600;
+    margin: 18px 0 8px;
+  }
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    color: var(--ink);
+    padding: 10px 14px; border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .callout.warn { border-color: var(--warn); background: var(--warn-soft); }
+  .callout strong { font-weight: 600; }
+  .empty {
+    padding: 30px; text-align: center; color: var(--muted);
+    border: 1px dashed var(--line); border-radius: 10px;
+    font-family: var(--mono); font-size: 13px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .doc-meta { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .app { grid-template-columns: 1fr; }
+    aside.sidebar {
+      position: relative; height: auto;
+      border-right: none; border-bottom: 1px solid var(--line);
+    }
+    nav.nav { flex-direction: row; flex-wrap: wrap; }
+    nav.nav a { padding: 6px 10px; font-size: 12.5px; }
+    .nav-label { width: 100%; padding: 8px 4px 4px; }
+    .topbar { grid-template-columns: 1fr; gap: 10px; padding: 12px 16px; }
+    .content { padding: 18px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .doc-meta { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 32px 1fr; }
+    .step-check { grid-column: 1 / -1; justify-content: flex-end; }
+    .rung { grid-template-columns: 52px 1fr; }
+    .rung .sla { grid-column: 1 / -1; }
+    .approval .row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+
+  @media (max-width: 1000px) {
+    .roadmap-lane { grid-template-columns: 1fr; }
+    .roadmap-nodes.enrolment { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .roadmap-nodes.processing, .roadmap-nodes.submission { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .roadmap-head { flex-direction: column; }
+    .roadmap-mini-note { white-space: normal; }
+    .roadmap-nodes.enrolment, .roadmap-nodes.processing, .roadmap-nodes.submission { grid-template-columns: 1fr; }
+    .roadmap-node { min-height: 64px; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    :root { --bg: #fff; }
+    body { background: #fff; }
+    aside.sidebar, .topbar, .role-bar, .top-actions, .step-check, .phase-go, .btn { display: none !important; }
+    .app { grid-template-columns: 1fr; }
+    .content { padding: 0; max-width: 100%; }
+    .section { page-break-inside: avoid; }
+    .step, .card, .rung, .handover { box-shadow: none !important; border-color: #ccc !important; }
+    .compliance-banner { background: #fff !important; border: 1px solid #aaa !important; color: #000; }
+    a { color: #000; text-decoration: none; }
+    h1, h2, h3 { color: #000; }
+    .phase-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">WC</div>
+      <div class="brand-text">
+        <div class="t1">Enrolment SOP</div>
+        <div class="t2">SOP-WC-01 · v1.0</div>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <div class="nav-label">Contents</div>
+      <a href="#overview" data-target="overview"><span class="ico">◐</span> Overview</a>
+      <a href="#roles" data-target="roles"><span class="ico">◇</span> Roles &amp; Responsibilities</a>
+      <div class="nav-label">Processes</div>
+      <a href="#timetable" data-target="timetable"><span class="ico">▣</span> Timetable Setup</a>
+      <a href="#urgent" data-target="urgent"><span class="ico">⚠</span> Urgent Change Classes</a>
+      <a href="#enrolment" data-target="enrolment"><span class="ico">✎</span> Student Enrolment</a>
+      <div class="nav-label">Operations</div>
+      <a href="#handover" data-target="handover"><span class="ico">⤓</span> T-24h Handover</a>
+      <a href="#escalation" data-target="escalation"><span class="ico">↑</span> Escalation</a>
+      <a href="#tools" data-target="tools"><span class="ico">⚙</span> Tools &amp; Templates</a>
+      <a href="#records" data-target="records"><span class="ico">⛁</span> Records &amp; Compliance</a>
+      <a href="#approval" data-target="approval"><span class="ico">✓</span> Approval &amp; Review</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Confidential · Internal Use<br>
+      Review: Annual
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="topbar">
+      <div class="search">
+        <span class="search-ico">⌕</span>
+        <input id="search" type="text" placeholder="Search steps, owners, artefacts… try “USI”, “SafeWork”, “T-24h”" autocomplete="off" />
+        <span class="search-hint">⌘K</span>
+      </div>
+      <div class="top-actions">
+        <button class="btn" id="resetChecklist" title="Reset all checklist progress">↺ Reset checklist</button>
+        <button class="btn btn-primary" onclick="window.print()">⎙ Print</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Compliance banner -->
+      <div class="compliance-banner" role="note">
+        <span class="ico">🔒</span>
+        <div>
+          <strong>Confidential – Internal Use.</strong> Do not upload student ID copies or personal student information to this prototype.
+        </div>
+      </div>
+
+      <!-- ============ OVERVIEW ============ -->
+      <section class="section" id="overview" data-section="overview">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">◐</div>
+            <div>
+              <h2>Overview</h2>
+              <div class="subtitle">White Card Course — Phase 1 Enrolment</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-meta" id="docMeta"></div>
+
+        <div class="grid grid-2 summary-grid">
+          <div class="card summary-card">
+            <div class="lbl">Purpose</div>
+            <p id="purposeText"></p>
+          </div>
+          <div class="card summary-card">
+            <div class="lbl">Scope</div>
+            <p id="scopeText"></p>
+          </div>
+        </div>
+
+
+        <h3 class="sub-title">Quick virtual roadmap</h3>
+        <div class="roadmap-shell" id="roadmapShell">
+          <div class="roadmap-head">
+            <div>
+              <h3>White Card course journey</h3>
+              <p>Use this as the live daily roadmap. Click any step to open the details below without leaving the main page.</p>
+            </div>
+            <div class="roadmap-mini-note">Click step → detail panel</div>
+          </div>
+          <div class="roadmap-lanes" id="roadmap"></div>
+          <div class="roadmap-detail" id="roadmapDetail" aria-live="polite"></div>
+        </div>
+        </div>
+      </section>
+
+      <!-- ============ ROLES ============ -->
+      <section class="section" id="roles" data-section="roles">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">◇</div>
+            <div>
+              <h2>Roles &amp; Responsibilities</h2>
+              <div class="subtitle">RACI summary across Phase 1</div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-2 roles-grid" id="rolesGrid"></div>
+      </section>
+
+      <!-- ============ ROLE FILTER ============ -->
+      <div class="role-bar" id="roleBar">
+        <span class="lbl">Filter by role</span>
+        <button class="role-pill active" data-role="all">All</button>
+        <button class="role-pill" data-role="rto"><span class="dot"></span>RTO Team</button>
+        <button class="role-pill" data-role="enrolment"><span class="dot"></span>Enrolment Team</button>
+        <button class="role-pill" data-role="yoko"><span class="dot"></span>Yoko</button>
+        <button class="role-pill" data-role="thai"><span class="dot"></span>Thai / Alicia</button>
+        <button class="role-pill" data-role="ops"><span class="dot"></span>Ops Manager</button>
+      </div>
+
+      <!-- ============ TIMETABLE ============ -->
+      <section class="section" id="timetable" data-section="timetable">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">▣</div>
+            <div>
+              <h2>Process 1 · Timetable Setup</h2>
+              <div class="subtitle">Locks the class before any folder or booking work begins</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Sequencing rule.</strong> Timetable setup happens weeks before class day. Do not start the next step until the previous step has produced its output. The class folder must not be created until the timetable is locked.
+        </div>
+        <div class="steps" id="timetableSteps"></div>
+      </section>
+
+      <!-- ============ URGENT ============ -->
+      <section class="section" id="urgent" data-section="urgent">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">⚠</div>
+            <div>
+              <h2>Process 2 · Urgent Change Classes</h2>
+              <div class="subtitle">Any change to date, trainer, or venue</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout warn">
+          <strong>Definition.</strong> Any change to a published class date, trainer, or venue triggers urgent change management. The change is not complete until every system and every audience has been updated.
+        </div>
+        <div class="steps" id="urgentSteps"></div>
+      </section>
+
+      <!-- ============ ENROLMENT ============ -->
+      <section class="section" id="enrolment" data-section="enrolment">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">✎</div>
+            <div>
+              <h2>Process 3 · Student Enrolment</h2>
+              <div class="subtitle">Opens at class creation, closes at T-24h</div>
+            </div>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>Hard cut-off.</strong> Student enrolment opens when the class is created in SMS / Hub System and closes at T-24h before class. The hard cut-off is required so pre-filled enrolment forms reflect the final list.
+        </div>
+
+        <h3 class="sub-title">Pre-enrolment data required</h3>
+        <div class="grid grid-4" id="preEnrolGrid"></div>
+
+        <h3 class="sub-title">Student communications</h3>
+        <div class="steps" id="commsSteps"></div>
+
+        <h3 class="sub-title">T-24h pre-filled enrolment forms</h3>
+        <div class="steps" id="t24Steps"></div>
+      </section>
+
+      <!-- ============ HANDOVER ============ -->
+      <section class="section" id="handover" data-section="handover">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">⤓</div>
+            <div>
+              <h2>T-24h Handover Checklist</h2>
+              <div class="subtitle">By T-24h end of business, /Enrolment must contain:</div>
+            </div>
+          </div>
+        </div>
+        <div class="handover">
+          <div class="handover-head">
+            <div class="ttl">
+              <div>
+                <h3>Phase 1 → Phase 2 (Processing)</h3>
+                <div class="sub" id="handoverPath">/ClassFolder/Enrolment/</div>
+              </div>
+            </div>
+            <div class="handover-progress">
+              <span id="handoverCount">0 / 4</span>
+              <div class="progress-track"><div class="progress-fill" id="handoverFill"></div></div>
+            </div>
+          </div>
+          <div class="artefact-list" id="artefactList"></div>
+        </div>
+      </section>
+
+      <!-- ============ ESCALATION ============ -->
+      <section class="section" id="escalation" data-section="escalation">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">↑</div>
+            <div>
+              <h2>Escalation</h2>
+              <div class="subtitle">L1 → L5 ladder, plus enrolment-specific triggers</div>
+            </div>
+          </div>
+        </div>
+        <div class="ladder" id="ladder"></div>
+
+        <h3 class="sub-title">Enrolment-specific triggers</h3>
+        <div class="grid grid-2 triggers" id="triggers"></div>
+      </section>
+
+      <!-- ============ TOOLS ============ -->
+      <section class="section" id="tools" data-section="tools">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">⚙</div>
+            <div>
+              <h2>Tools &amp; Templates</h2>
+              <div class="subtitle">Systems and files used in Phase 1</div>
+            </div>
+          </div>
+        </div>
+        <div class="card tools-list" id="toolsList"></div>
+      </section>
+
+      <!-- ============ RECORDS ============ -->
+      <section class="section" id="records" data-section="records">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">⛁</div>
+            <div>
+              <h2>Records &amp; Compliance</h2>
+              <div class="subtitle">Storage, retention, privacy &amp; versioning</div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-2 records-grid" id="recordsGrid"></div>
+      </section>
+
+      <!-- ============ APPROVAL ============ -->
+      <section class="section" id="approval" data-section="approval">
+        <div class="section-header">
+          <div class="title">
+            <div class="sec-ico">✓</div>
+            <div>
+              <h2>Approval &amp; Review</h2>
+              <div class="subtitle">Document control</div>
+            </div>
+          </div>
+        </div>
+        <div class="card approval" id="approvalBox"></div>
+      </section>
+
+      <div class="empty" id="emptyState" style="display:none;">
+        No results match your search. Try a different keyword or clear the search box.
+      </div>
+
+      <p style="text-align:center; color:var(--muted); font-size:11.5px; font-family:var(--mono); margin: 28px 0 8px;">
+        END · SOP-WC-01 · Linked Master 00_Master_SOP_WhiteCard v2.1
+      </p>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   SOP DATA — edit here to update the prototype
+   ============================================================ */
+const sopData = {
+  meta: {
+    title: "White Card Course – Enrolment SOP",
+    docId: "SOP-WC-01",
+    version: "1.0",
+    linkedMaster: "00_Master_SOP_WhiteCard v2.1",
+    owner: "RTO Team Lead (Timetable & Urgent Changes); Enrolment Team Lead (Student Enrolment)",
+    effectiveDate: "TBC",
+    reviewCycle: "Annual, or upon process/regulatory change",
+    audience: "RTO Team, Enrolment Team, Operations Manager",
+    confidentiality: "Confidential – Internal Use"
+  },
+  purpose: "This SOP defines the step-level procedure for Phase 1 Enrolment of the White Card Course. It supports the Master SOP and gives the RTO Team and Enrolment Team the detailed steps from course planning through to T-24h handover to the Processing Team.",
+  scope: "Applies to every White Card class, including face-to-face, online, hybrid, direct enrolment, and agency-introduced students. Covers from course planning and timetable confirmation with Yoko / Thai / Alicia through to saving pre-filled enrolment forms in the /Enrolment subfolder at T-24h before class. Does not cover Phase 2 Processing or Phase 3 Submission.",
+  roles: [
+    { key: "rto", name: "RTO Team", raci: "Responsible",
+      duties: ["Confirm CQ/VTC and TP dates", "Update Master Timetable", "Create classes in SMS and Hub System", "Create class folders and notify team leads", "Issue SafeWork pre-training notification", "Trainer confirmation", "Urgent change communications"] },
+    { key: "enrolment", name: "Enrolment Team", raci: "Responsible",
+      duties: ["Pre-enrolment data collection", "Student communications (internal students)", "Print pre-filled enrolment forms at T-24h", "T-24h handover to Processing"] },
+    { key: "yoko", name: "Yoko", raci: "Consulted",
+      duties: ["CQ/VTC dates confirmation", "Agency/public communications sign-off"] },
+    { key: "thai", name: "Thai / Alicia", raci: "Consulted",
+      duties: ["TP date confirmation", "Trainer-related matters"] },
+    { key: "ops", name: "Operations Manager", raci: "Accountable",
+      duties: ["Timetable, folder readiness, SafeWork notification, trainer confirmation", "Enrolment process oversight", "Urgent change management", "Escalation"] }
+  ],
+  timetable: [
+    { n: 1, action: "Confirm CQ and VTC short course dates with Yoko by email or Teams.", owners: ["rto","yoko"], timing: "Start of planning cycle", output: "Confirmed CQ/VTC dates on record", checkable: true },
+    { n: 2, action: "Confirm TP dates with Thai or Alicia by email or Teams.", owners: ["rto","thai"], timing: "Start of planning cycle", output: "Confirmed TP dates on record", checkable: true },
+    { n: 3, action: "Create or update the Master Timetable in Excel, allocate the classroom, save to SharePoint with read access for all teams.", owners: ["rto"], timing: "After Steps 1 and 2 confirmed", output: "Master Timetable updated", checkable: true },
+    { n: 4, action: "Create / update classes in Student Management System for public booking.", owners: ["rto"], timing: "After Master Timetable locked", output: "Class is publicly bookable", checkable: true },
+    { n: 5, action: "Create classes in Hub System for internal / agency booking.", owners: ["rto"], timing: "Same as Step 4", output: "Class is internally bookable", checkable: true },
+    { n: 6, action: "Create Class Folder WC_[Date]_[Location]_[Trainer] in SharePoint and create /Enrolment, /Processing, and /Submission subfolders.", owners: ["rto"], timing: "Immediately after Steps 4 and 5", output: "SharePoint structure ready", checkable: true },
+    { n: 7, action: "Notify all team leads in writing that the class folder is ready.", owners: ["rto"], timing: "Immediately after Step 6", output: "Email or Teams notice on record", checkable: true },
+    { n: 8, action: "Trainer allocation and confirmation. Forward booking confirmation to assigned trainer by email. Include course code, date, time, venue, and language.", owners: ["rto","thai"], timing: "After class details are confirmed", output: "Trainer confirmation record", checkable: true }
+  ],
+  urgent: [
+    { n: 1, action: "Issue revised SafeWork notice to the regulator at least 7 days before delivery.", owners: ["rto","ops"], timing: "Change confirmed", output: "Revised notice lodged", checkable: true },
+    { n: 2, action: "Notify trainer by email of the change.", owners: ["rto"], timing: "Change confirmed", output: "Trainer acknowledgement on record", checkable: true },
+    { n: 3, action: "Update Master Timetable, SMS, and Hub System records.", owners: ["rto"], timing: "Change confirmed", output: "All systems aligned", checkable: true },
+    { n: 4, action: "Update website and agency communications. Confirm with Yoko before external agency communication goes out.", owners: ["rto","yoko"], timing: "Change confirmed", output: "Public information updated", checkable: true },
+    { n: "5A", action: "Notify enrolled public students by email and SMS.", owners: ["rto"], timing: "Change confirmed", output: "Student notification on record", checkable: true },
+    { n: "5B", action: "Notify enrolled internal booking students by email and SMS.", owners: ["enrolment"], timing: "Change confirmed", output: "Student notification on record", checkable: true },
+    { n: 6, action: "Log the change in the Escalation / Change Register in the class folder.", owners: ["rto"], timing: "After Steps 1 to 5", output: "Audit trail", checkable: true }
+  ],
+  preEnrol: [
+    { ico: "👤", label: "Full legal name", desc: "Matching photo ID" },
+    { ico: "📅", label: "Date of birth", desc: "DD/MM/YYYY format" },
+    { ico: "📱", label: "Mobile & email", desc: "Verified contact" },
+    { ico: "🆔", label: "Verified USI", desc: "USI registry verified" },
+    { ico: "💳", label: "Payment status", desc: "Paid, pending or agency-funded" },
+    { ico: "📝", label: "LLN screening", desc: "Result + accessibility needs" },
+    { ico: "🪪", label: "Photo ID copy", desc: "Clear, current, government-issued" }
+  ],
+  comms: [
+    { n: 1, action: "Enrolment confirmation — email + SMS sent immediately on enrolment confirmation.", owners: ["enrolment","rto"], timing: "On confirmation", output: "Confirmation log", channel: "Email + SMS", checkable: true },
+    { n: 2, action: "48-hour reminder — email + SMS to enrolled students. (Optional)", owners: ["enrolment","rto"], timing: "T-48h before class", output: "Reminder log", channel: "Email + SMS", checkable: true },
+    { n: 3, action: "Morning-of-class reminder — SMS only to enrolled students. (Optional)", owners: ["enrolment","rto"], timing: "Morning of class", output: "Reminder log", channel: "SMS", checkable: true }
+  ],
+  t24: [
+    { n: 1, action: "Run the Hub System pre-filled enrolment report for the class.", owners: ["enrolment"], timing: "T-24h", output: "PDF generated", checkable: true, t24: true },
+    { n: 2, action: "Print hard copies, one per student, for the trainer / Operation Team.", owners: ["enrolment"], timing: "T-24h", output: "Printed forms ready for handover", checkable: true, t24: true },
+    { n: 3, action: "Save soft copy to /Enrolment subfolder as PreFilledEnrolmentForms.pdf or individual student PDF files.", owners: ["enrolment"], timing: "T-24h", output: "Compliance record on file", checkable: true, t24: true },
+    { n: 4, action: "Notify Operation Team Lead via Teams / email that forms are ready and Phase 1 handover is complete.", owners: ["enrolment","ops"], timing: "T-24h, by 4pm latest", output: "Handover signal sent", checkable: true, t24: true }
+  ],
+  artefacts: [
+    { id: "studentList", name: "Student List", filename: "StudentList.xlsx", desc: "Final list with payment, ID, USI and LLN flags." },
+    { id: "safework", name: "SafeWork Notification", filename: "SafeWorkNotification.pdf", desc: "Pre-training notice lodged with SafeWork NSW." },
+    { id: "trainer", name: "Trainer Confirmation", filename: "TrainerConfirmation.docx", desc: "Email confirmation that trainer accepted the class." },
+    { id: "prefilled", name: "Pre-filled Enrolment Forms", filename: "[Studentfullname].pdf", desc: "Printed / generated from Hub System at T-24h." }
+  ],
+  ladder: [
+    { l: 1, name: "Team Member", when: "First detection of issue.", sla: "Resolve within scope" },
+    { l: 2, name: "Team Lead", when: "Issue not resolved within team scope or risk of breaching SLA.", sla: "30 min · business hours" },
+    { l: 3, name: "Operations Manager", when: "Affects multiple teams, will breach SLA, or affects compliance.", sla: "2 hours · business hours" },
+    { l: 4, name: "RTO Manager / Compliance", when: "Regulatory breach, audit risk, or repeat L3 escalation.", sla: "Same business day" },
+    { l: 5, name: "Director / CEO", when: "Reputational, legal, or financial exposure.", sla: "Within 24 hours" }
+  ],
+  triggers: [
+    { n: 1, when: "Yoko, Thai or Alicia have not confirmed dates within 24h.", to: "Backup approver → Ops Manager L3", within: "48h of original request" },
+    { n: 2, when: "Minimum class size not reached at T-48h.", to: "Ops Manager L3", within: "Same day" },
+    { n: 3, when: "USI verification failure at pre-enrolment.", to: "Enrolment Team Lead L2", within: "Immediate" },
+    { n: 4, when: "Late enrolment request past T-24h cut-off.", to: "Enrolment Team Lead L2", within: "Immediate" },
+    { n: 5, when: "SafeWork pre-training notice missed or rejected.", to: "Ops Manager L3 · RTO Manager L4 if unresolved before class", within: "Same day" },
+    { n: 6, when: "Pre-filled enrolment form cannot be generated due to Hub System issue.", to: "Enrolment Team Lead L2 · RTO Team Lead if unresolved", within: "2 hours" },
+    { n: 7, when: "Trainer does not acknowledge confirmation.", to: "RTO Team Lead L2 · Ops Manager L3 if no response in 24h", within: "Daily until resolved" },
+    { n: 8, when: "Privacy concern with student ID copy — lost, mis-sent, or exposed data.", to: "RTO Manager L4", within: "Immediate" }
+  ],
+  tools: [
+    { ico: "▦", name: "Master Timetable Excel / Hub System", desc: "Single source of confirmed dates across all course types." },
+    { ico: "▤", name: "Student Management System (SMS)", desc: "Public booking and enrolment record of truth." },
+    { ico: "◰", name: "Hub System", desc: "Internal / agency booking, pre-filled enrolment form generation, enrolment record of truth." },
+    { ico: "☷", name: "T01_Student_List.xlsx", desc: "Final list per class saved to /Enrolment." },
+    { ico: "✉", name: "T06_Communication_Templates.docx", desc: "Confirmation, reminder, change, cancellation, and trainer templates." },
+    { ico: "⛨", name: "SafeWork NSW portal", desc: "Lodging pre-training notification." },
+    { ico: "↑", name: "T04_Escalation_Register.xlsx", desc: "Logging L2+ escalations specific to the class." }
+  ],
+  records: [
+    { ico: "📁", title: "Storage", body: "All Phase 1 artefacts live in the /Enrolment subfolder of the class folder. No duplicates outside this location." },
+    { ico: "🗄", title: "Retention", body: "30 years VET record requirement. Class folder is locked from edits at class closure. Future amendments follow amendment process." },
+    { ico: "🔐", title: "Privacy", body: "Student ID copies are personal data. Handle according to Privacy / Data Handling Policy. Do not email outside the organisation. SharePoint permissions are reviewed quarterly." },
+    { ico: "⎙", title: "Versioning", body: "SharePoint version history enabled at class folder level so previous versions of files are preserved." }
+  ]
+};
+
+
+/* Compact roadmap data — edit this for the visual roadmap at the top */
+sopData.roadmap = [
+  {
+    id: "class-create",
+    phase: "enrolment",
+    phaseLabel: "1. Enrolment",
+    n: 1,
+    title: "Class timetable / creation",
+    shortOwner: "RTO Team",
+    owners: ["rto", "yoko", "thai"],
+    timing: "Start of planning cycle",
+    system: "Master Timetable, SMS, Hub System, SharePoint",
+    output: "Confirmed dates, bookable class, and class folder ready",
+    summary: "Confirm dates first, then create the class in the required systems. Only create the SharePoint class folder after the timetable is locked.",
+    details: [
+      "Confirm CQ/VTC dates with Yoko.",
+      "Confirm TP dates with Thai or Alicia.",
+      "Update the Master Timetable and allocate the classroom.",
+      "Create the class in SMS for public booking and Hub System for internal/agency booking.",
+      "Create WC_[Date]_[Location]_[Trainer] folder with /Enrolment, /Processing and /Submission subfolders after class details are locked."
+    ],
+    target: "timetable"
+  },
+  {
+    id: "safework-notice",
+    phase: "enrolment",
+    phaseLabel: "1. Enrolment",
+    n: 2,
+    title: "SafeWork notice",
+    shortOwner: "RTO Team",
+    owners: ["rto", "ops"],
+    timing: "Pre-delivery / at least 7 days for revised notice",
+    system: "SafeWork NSW portal",
+    output: "Notification reference/status saved",
+    summary: "Submit the required pre-training notification and keep the evidence with the class record.",
+    details: [
+      "Lodge the SafeWork pre-training notification.",
+      "Save the confirmation, reference or status as SafeWorkNotification.pdf.",
+      "If date, trainer or venue changes, issue the revised notice and update all systems.",
+      "Escalate immediately if the notice is missed or rejected."
+    ],
+    target: "handover"
+  },
+  {
+    id: "trainer-confirmation",
+    phase: "enrolment",
+    phaseLabel: "1. Enrolment",
+    n: 3,
+    title: "Trainer confirmation",
+    shortOwner: "RTO Team",
+    owners: ["rto", "thai"],
+    timing: "After class details are confirmed",
+    system: "Email / Teams, TrainerConfirmation.docx",
+    output: "Trainer acceptance saved",
+    summary: "Confirm the trainer formally and keep written acceptance on file.",
+    details: [
+      "Send course code, date, time, venue and language to the trainer.",
+      "Request acknowledgement/acceptance.",
+      "Save trainer confirmation into the /Enrolment folder.",
+      "Escalate if the trainer does not acknowledge within the required timeframe."
+    ],
+    target: "timetable"
+  },
+  {
+    id: "student-details",
+    phase: "enrolment",
+    phaseLabel: "1. Enrolment",
+    n: 4,
+    title: "Student enrolment details",
+    shortOwner: "Enrolment Team",
+    owners: ["enrolment"],
+    timing: "From class creation until T-24h cut-off",
+    system: "Hub System / SMS / Student List",
+    output: "Confirmed Student List",
+    summary: "Collect the required student details before confirming enrolment. No verified USI means no confirmed enrolment.",
+    details: [
+      "Collect legal name, DOB, mobile, email, verified USI, payment status, LLN/accessibility needs and photo ID.",
+      "Do not add the student to the final Student List until required data is complete.",
+      "Keep personal information inside approved systems only.",
+      "Late enrolment requests after T-24h must be escalated."
+    ],
+    target: "enrolment"
+  },
+  {
+    id: "pre-enrol-pack",
+    phase: "enrolment",
+    phaseLabel: "1. Enrolment",
+    n: 5,
+    title: "Pre-enrolment pack / notice",
+    shortOwner: "Enrolment Team",
+    owners: ["enrolment", "rto"],
+    timing: "On confirmation, optional T-48h and morning reminder",
+    system: "Email + SMS templates",
+    output: "Student communication record",
+    summary: "Send confirmation and class information so students know what to bring and where to attend.",
+    details: [
+      "Send enrolment confirmation immediately after enrolment is confirmed.",
+      "Send optional 48-hour reminder and morning-of-class SMS if required.",
+      "Use the correct owner split: Enrolment Team for internal students, RTO Team for public students.",
+      "Keep communication records against the student enrolment."
+    ],
+    target: "enrolment"
+  },
+  {
+    id: "check-in",
+    phase: "processing",
+    phaseLabel: "2. Processing",
+    n: 6,
+    title: "Day-of-training check-in",
+    shortOwner: "Australia Team",
+    owners: ["australia"],
+    timing: "Before class starts",
+    system: "Roster, ID check, USI confirmation",
+    output: "Attendance and identity confirmed",
+    summary: "Check students against the roster, sight ID and confirm USI before the class starts.",
+    details: [
+      "Use the final Student List and printed/pre-filled forms from the /Enrolment folder.",
+      "Check attendance against roster.",
+      "Sight ID and confirm student details.",
+      "Resolve or escalate mismatches before training starts."
+    ],
+    target: "handover"
+  },
+  {
+    id: "training-delivery",
+    phase: "processing",
+    phaseLabel: "2. Processing",
+    n: 7,
+    title: "Training delivery",
+    shortOwner: "Trainer",
+    owners: ["trainer", "australia"],
+    timing: "Class delivery time",
+    system: "Training and assessment documents",
+    output: "Roll call and assessment documents completed",
+    summary: "Trainer delivers the White Card course and completes required assessment/roll call documentation.",
+    details: [
+      "Trainer leads course delivery.",
+      "Australia Team supports classroom/admin needs where required.",
+      "Ensure required assessment documents are completed.",
+      "Any day-of-training incident or missing evidence should be escalated."
+    ],
+    target: "records"
+  },
+  {
+    id: "scan-documents",
+    phase: "processing",
+    phaseLabel: "2. Processing",
+    n: 8,
+    title: "Document collection / scan",
+    shortOwner: "Australia Team",
+    owners: ["australia", "rto"],
+    timing: "After class",
+    system: "Class folder / Processing folder",
+    output: "Original class documents scanned and handed to RTO Team",
+    summary: "Collect original class documents from the trainer, scan/save them and hand over to the RTO Team.",
+    details: [
+      "Collect all original class documents from trainer.",
+      "Scan and save documents in the correct class folder.",
+      "Check that files are readable and complete.",
+      "Notify RTO Team that the processing handover is ready."
+    ],
+    target: "records"
+  },
+  {
+    id: "review-lodge",
+    phase: "submission",
+    phaseLabel: "3. Submission",
+    n: 9,
+    title: "Review / SafeWork lodgement",
+    shortOwner: "RTO Team",
+    owners: ["rto"],
+    timing: "After Processing handover",
+    system: "Class records and SafeWork lodgement",
+    output: "Completion data lodged and records verified",
+    summary: "Review attendance, assessment, USI, ID and records before lodging completion data with SafeWork.",
+    details: [
+      "Check attendance and assessment documents.",
+      "Confirm USI, ID and required records are complete.",
+      "Lodge completion data with SafeWork.",
+      "Keep lodgement evidence with the class record."
+    ],
+    target: "records"
+  },
+  {
+    id: "closure",
+    phase: "submission",
+    phaseLabel: "3. Submission",
+    n: 10,
+    title: "Accounting handoff / closure",
+    shortOwner: "RTO + Accounting",
+    owners: ["rto", "accounting", "maria"],
+    timing: "After records and lodgement are complete",
+    system: "Verified student list / closure record",
+    output: "Class closed and invoicing handoff complete",
+    summary: "Send verified student list for invoicing and close the class once records, lodgement and handoff are complete.",
+    details: [
+      "Send verified student list to Accounting for invoicing.",
+      "Confirm all records and lodgement evidence are complete.",
+      "Close the class folder/process when handoff is complete.",
+      "Maria oversees the closure/handoff process where applicable."
+    ],
+    target: "approval"
+  }
+];
+
+/* ============================================================
+   RENDERERS
+   ============================================================ */
+const $ = (s, p=document) => p.querySelector(s);
+const $$ = (s, p=document) => Array.from(p.querySelectorAll(s));
+const roleLabel = {
+  rto: "RTO Team", enrolment: "Enrolment Team", yoko: "Yoko",
+  thai: "Thai / Alicia", ops: "Ops Manager",
+  australia: "Australia Team", trainer: "Trainer",
+  accounting: "Accounting", maria: "Maria"
+};
+
+/* ---------- Overview ---------- */
+function renderMeta() {
+  const m = sopData.meta;
+  const rows = [
+    ["Document ID", m.docId],
+    ["Version", m.version],
+    ["Effective", m.effectiveDate],
+    ["Review", m.reviewCycle],
+    ["Owner", m.owner],
+    ["Audience", m.audience],
+    ["Linked Master", m.linkedMaster],
+    ["Confidentiality", m.confidentiality]
+  ];
+  $("#docMeta").innerHTML = rows.map(([k,v]) => `
+    <div class="cell"><div class="k">${k}</div><div class="v">${v}</div></div>
+  `).join("");
+  $("#purposeText").textContent = sopData.purpose;
+  $("#scopeText").textContent = sopData.scope;
+}
+
+/* ---------- Roles ---------- */
+function renderRoles() {
+  $("#rolesGrid").innerHTML = sopData.roles.map(r => `
+    <div class="card role-card" data-roles="${r.key}" data-search="${[r.name, r.raci, ...r.duties].join(" ")}">
+      <div class="role-head">
+        <h3>${r.name}</h3>
+        <span class="badge role-${r.key}"><span class="dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:4px;"></span>${r.raci}</span>
+      </div>
+      <ul class="resp" style="padding-left:18px;margin:0;">
+        ${r.duties.map(d => `<li>${d}</li>`).join("")}
+      </ul>
+    </div>
+  `).join("");
+}
+
+/* ---------- Step card ---------- */
+function ownerBadges(owners) {
+  return owners.map(o => `<span class="badge role-${o}">${roleLabel[o]}</span>`).join(" ");
+}
+function timingBadge(timing, isT24) {
+  if (isT24 || /T-24h/i.test(timing)) return `<span class="badge timing-t24">${timing}</span>`;
+  if (/T-48h|Morning of/.test(timing)) return `<span class="badge timing-pre">${timing}</span>`;
+  return `<span class="badge time">${timing}</span>`;
+}
+function stepCardHTML(step, idPrefix) {
+  const id = `${idPrefix}-${step.n}`;
+  const searchBlob = [step.action, step.timing, step.output, ...(step.owners||[]).map(o=>roleLabel[o])].join(" ");
+  const checkbox = step.checkable !== false ? `
+    <div class="step-check">
+      <input type="checkbox" id="chk-${id}" data-check="${id}">
+      <label for="chk-${id}">Done</label>
+    </div>` : '<span></span>';
+  return `
+    <div class="step" data-step-id="${id}" data-roles="${(step.owners||[]).join(' ')}" data-search="${searchBlob.replace(/"/g,'&quot;')}">
+      <div class="step-num">${step.n}</div>
+      <div class="step-body">
+        <div class="action">${step.action}</div>
+        <div class="step-meta">
+          <span class="meta"><span class="k">Owner</span> ${ownerBadges(step.owners||[])}</span>
+          <span class="meta"><span class="k">Timing</span> ${timingBadge(step.timing, step.t24)}</span>
+          <span class="meta"><span class="k">Output</span> <span style="color:var(--ink-2);">${step.output}</span></span>
+          ${step.channel ? `<span class="meta"><span class="k">Channel</span> <span style="color:var(--ink-2);">${step.channel}</span></span>` : ""}
+        </div>
+      </div>
+      ${checkbox}
+    </div>`;
+}
+function renderSteps(target, list, idPrefix) {
+  $(target).innerHTML = list.map(s => stepCardHTML(s, idPrefix)).join("");
+}
+
+/* ---------- Compact roadmap ---------- */
+function renderRoadmap() {
+  const phases = [
+    { key: "enrolment", label: "1. Enrolment" },
+    { key: "processing", label: "2. Processing" },
+    { key: "submission", label: "3. Submission" }
+  ];
+
+  $("#roadmap").innerHTML = phases.map(phase => {
+    const nodes = sopData.roadmap.filter(item => item.phase === phase.key);
+    return `
+      <div class="roadmap-lane">
+        <div class="lane-label ${phase.key}">
+          <div class="phase">Phase</div>
+          <div class="name">${phase.label}</div>
+        </div>
+        <div class="roadmap-nodes ${phase.key}">
+          ${nodes.map(item => `
+            <button type="button" class="roadmap-node" data-roadmap-id="${item.id}" data-roles="${(item.owners||[]).join(' ')}" data-search="${[item.title, item.shortOwner, item.summary, item.system, item.output, ...(item.details||[])].join(' ').replace(/"/g,'&quot;')}">
+              <span class="node-num">${item.n}</span>
+              <span>
+                <span class="node-title">${item.title}</span>
+                <span class="node-owner">${item.shortOwner}</span>
+              </span>
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  selectRoadmap(sopData.roadmap[0].id, false);
+}
+
+function selectRoadmap(id, scrollDetail = true) {
+  const item = sopData.roadmap.find(x => x.id === id) || sopData.roadmap[0];
+  $$(".roadmap-node").forEach(n => n.classList.toggle("active", n.dataset.roadmapId === item.id));
+
+  $("#roadmapDetail").innerHTML = `
+    <div class="detail-grid">
+      <div>
+        <div class="detail-title-row">
+          <div>
+            <div class="detail-kicker">Selected roadmap step</div>
+            <h3>${item.n}. ${item.title}</h3>
+          </div>
+          <span class="phase-chip ${item.phase}">${item.phaseLabel}</span>
+        </div>
+        <p class="detail-summary">${item.summary}</p>
+        <ul class="detail-list">
+          ${(item.details || []).map(d => `<li>${d}</li>`).join("")}
+        </ul>
+        <div class="detail-actions">
+          <button class="btn btn-primary" type="button" data-scroll-target="${item.target || ""}">Open related SOP section</button>
+          <button class="btn" type="button" data-copy-roadmap="${item.id}">Copy step summary</button>
+        </div>
+      </div>
+      <div class="detail-side">
+        <div class="mini">
+          <div class="k">Owner</div>
+          <div class="v">${ownerBadges(item.owners || [])}</div>
+        </div>
+        <div class="mini">
+          <div class="k">Timing</div>
+          <div class="v">${timingBadge(item.timing || "As required", /T-24h/i.test(item.timing || ""))}</div>
+        </div>
+        <div class="mini">
+          <div class="k">System / file</div>
+          <div class="v">${item.system}</div>
+        </div>
+        <div class="mini">
+          <div class="k">Required output</div>
+          <div class="v">${item.output}</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (scrollDetail) {
+    $("#roadmapDetail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+}
+
+function bindRoadmap() {
+  document.addEventListener("click", e => {
+    const node = e.target.closest(".roadmap-node");
+    if (node) {
+      selectRoadmap(node.dataset.roadmapId);
+      return;
+    }
+
+    const scrollBtn = e.target.closest("[data-scroll-target]");
+    if (scrollBtn) {
+      const id = scrollBtn.dataset.scrollTarget;
+      const tgt = id ? document.getElementById(id) : null;
+      if (tgt) window.scrollTo({ top: tgt.offsetTop - 70, behavior: "smooth" });
+      return;
+    }
+
+    const copyBtn = e.target.closest("[data-copy-roadmap]");
+    if (copyBtn) {
+      const item = sopData.roadmap.find(x => x.id === copyBtn.dataset.copyRoadmap);
+      if (!item) return;
+      const text = `${item.n}. ${item.title}\nOwner: ${item.shortOwner}\nTiming: ${item.timing}\nOutput: ${item.output}\n\n${item.summary}`;
+      navigator.clipboard?.writeText(text);
+      copyBtn.textContent = "Copied";
+      setTimeout(() => copyBtn.textContent = "Copy step summary", 1200);
+    }
+  });
+}
+
+
+/* ---------- Pre-enrol ---------- */
+function renderPreEnrol() {
+  $("#preEnrolGrid").innerHTML = sopData.preEnrol.map(p => `
+    <div class="card" style="padding:14px;" data-search="${[p.label,p.desc].join(' ')}">
+      <div style="font-size:18px;margin-bottom:6px;">${p.ico}</div>
+      <div style="font-weight:600;font-size:13.5px;">${p.label}</div>
+      <div style="color:var(--muted);font-size:12.5px;margin-top:2px;">${p.desc}</div>
+    </div>
+  `).join("");
+}
+
+/* ---------- Artefacts ---------- */
+function renderArtefacts() {
+  $("#artefactList").innerHTML = sopData.artefacts.map(a => `
+    <label class="artefact" data-artefact-id="${a.id}" data-search="${[a.name,a.filename,a.desc].join(' ')}">
+      <input type="checkbox" data-check="art-${a.id}">
+      <div class="ar-body">
+        <div class="name">${a.name}</div>
+        <div class="filename">${a.filename}</div>
+        <div class="desc">${a.desc}</div>
+      </div>
+      <span class="file-pill">${a.filename.split('.').pop().toUpperCase()}</span>
+    </label>
+  `).join("");
+}
+
+/* ---------- Ladder ---------- */
+function renderLadder() {
+  $("#ladder").innerHTML = sopData.ladder.map(r => `
+    <div class="rung" data-l="${r.l}" data-search="${[r.name,r.when,r.sla].join(' ')}">
+      <div class="level">L${r.l}</div>
+      <div>
+        <h4>L${r.l} · ${r.name}</h4>
+        <div class="when">${r.when}</div>
+      </div>
+      <div class="sla">
+        <div class="k">Max response</div>
+        <div>${r.sla}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ---------- Triggers ---------- */
+function renderTriggers() {
+  $("#triggers").innerHTML = sopData.triggers.map(t => `
+    <div class="card trigger-card" data-search="${[t.when,t.to,t.within].join(' ')}">
+      <div class="trig-head">
+        <span class="trig-num">TRIGGER ${String(t.n).padStart(2,'0')}</span>
+        <span class="badge timing-pre">${t.within}</span>
+      </div>
+      <div class="trig-when">${t.when}</div>
+      <div class="trig-foot">
+        <span style="font-family:var(--mono);font-size:11px;">ESCALATE →</span>
+        <span style="color:var(--ink-2);">${t.to}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+/* ---------- Tools ---------- */
+function renderTools() {
+  $("#toolsList").innerHTML = sopData.tools.map(t => `
+    <div class="tool" data-search="${[t.name,t.desc].join(' ')}">
+      <div class="tool-ico">${t.ico}</div>
+      <div>
+        <div class="name">${t.name}</div>
+        <div class="desc">${t.desc}</div>
+      </div>
+      <span style="color:var(--muted);font-size:11px;font-family:var(--mono);">REF</span>
+    </div>
+  `).join("");
+}
+
+/* ---------- Records ---------- */
+function renderRecords() {
+  $("#recordsGrid").innerHTML = sopData.records.map(r => `
+    <div class="card record-card" data-search="${[r.title,r.body].join(' ')}">
+      <h3>${r.ico} ${r.title}</h3>
+      <p>${r.body}</p>
+    </div>
+  `).join("");
+}
+
+/* ---------- Approval ---------- */
+function renderApproval() {
+  const m = sopData.meta;
+  const rows = [
+    ["Document Owner", m.owner],
+    ["Effective Date", m.effectiveDate],
+    ["Review Cycle", m.reviewCycle],
+    ["Linked Master", m.linkedMaster],
+    ["Last Reviewed", "Reviewed annually or whenever workflow/regulatory requirements change. Each review is logged against the Master SOP."]
+  ];
+  $("#approvalBox").innerHTML = rows.map(([k,v]) => `
+    <div class="row"><div class="k">${k}</div><div class="v">${v}</div></div>
+  `).join("");
+}
+
+/* ============================================================
+   INTERACTIONS
+   ============================================================ */
+
+/* ---------- Checklist persistence ---------- */
+const STORAGE_KEY = "sop-wc-01.checklist.v1";
+function loadChecks() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+  catch { return {}; }
+}
+function saveChecks(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+function applyChecks() {
+  const state = loadChecks();
+  $$('input[type="checkbox"][data-check]').forEach(box => {
+    const id = box.dataset.check;
+    box.checked = !!state[id];
+    syncCheckUI(box);
+  });
+  updateHandoverProgress();
+}
+function syncCheckUI(box) {
+  const stepEl = box.closest('.step');
+  if (stepEl) stepEl.classList.toggle('checked', box.checked);
+  const artEl = box.closest('.artefact');
+  if (artEl) artEl.classList.toggle('checked', box.checked);
+}
+function bindChecks() {
+  document.addEventListener('change', e => {
+    const box = e.target;
+    if (!box.matches || !box.matches('input[type="checkbox"][data-check]')) return;
+    const state = loadChecks();
+    state[box.dataset.check] = box.checked;
+    saveChecks(state);
+    syncCheckUI(box);
+    updateHandoverProgress();
+  });
+  $("#resetChecklist").addEventListener('click', () => {
+    if (!confirm("Reset all checklist progress? This clears every Done/handover checkbox in your browser.")) return;
+    localStorage.removeItem(STORAGE_KEY);
+    $$('input[type="checkbox"][data-check]').forEach(b => { b.checked = false; syncCheckUI(b); });
+    updateHandoverProgress();
+  });
+}
+function updateHandoverProgress() {
+  const boxes = $$('#artefactList input[type="checkbox"]');
+  const done = boxes.filter(b => b.checked).length;
+  $("#handoverCount").textContent = `${done} / ${boxes.length}`;
+  $("#handoverFill").style.width = (boxes.length ? (done/boxes.length*100) : 0) + "%";
+}
+
+/* ---------- Role filter ---------- */
+let activeRole = "all";
+function bindRoleFilter() {
+  $$("#roleBar .role-pill").forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$("#roleBar .role-pill").forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeRole = btn.dataset.role;
+      applyFilters();
+    });
+  });
+}
+function applyRoleHighlight() {
+  $$(".step").forEach(s => {
+    s.classList.remove('role-hi','dimmed');
+    if (activeRole === 'all') return;
+    const roles = (s.dataset.roles || "").split(/\s+/);
+    if (roles.includes(activeRole)) s.classList.add('role-hi');
+    else s.classList.add('dimmed');
+  });
+  $$(".role-card").forEach(c => {
+    c.classList.remove('dimmed');
+    if (activeRole === 'all') return;
+    if ((c.dataset.roles||"") !== activeRole) c.classList.add('dimmed');
+  });
+  $$(".roadmap-node").forEach(n => {
+    n.classList.remove('dimmed');
+    if (activeRole === 'all') return;
+    const roles = (n.dataset.roles || "").split(/\s+/);
+    if (!roles.includes(activeRole)) n.classList.add('dimmed');
+  });
+}
+
+/* ---------- Search ---------- */
+let searchTerm = "";
+function bindSearch() {
+  const input = $("#search");
+  input.addEventListener('input', () => {
+    searchTerm = input.value.trim().toLowerCase();
+    applyFilters();
+  });
+  // ⌘K / Ctrl+K to focus
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      input.focus(); input.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === input) {
+      input.value = ""; searchTerm = ""; applyFilters(); input.blur();
+    }
+  });
+}
+function applyFilters() {
+  applyRoleHighlight();
+  // search filters anything with data-search; if no match in a section, the items hide
+  const filterables = $$("[data-search]");
+  let visibleCount = 0;
+  filterables.forEach(el => {
+    const blob = (el.dataset.search || "").toLowerCase();
+    const match = !searchTerm || blob.includes(searchTerm);
+    if (match) {
+      el.classList.remove('hidden');
+      el.style.display = "";
+      visibleCount++;
+    } else {
+      el.classList.add('hidden');
+      el.style.display = "none";
+    }
+  });
+  // dim sections with nothing visible (search only)
+  $$(".section").forEach(sec => {
+    if (!searchTerm) { sec.style.display = ""; return; }
+    const hasMatch = sec.querySelector("[data-search]:not(.hidden)");
+    sec.style.display = hasMatch ? "" : "none";
+  });
+  $("#emptyState").style.display = (searchTerm && visibleCount === 0) ? "" : "none";
+}
+
+/* ---------- Sidebar / nav active state + phase card jumps ---------- */
+function bindNav() {
+  $$("#nav a").forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.dataset.target;
+      const tgt = document.getElementById(id);
+      if (tgt) {
+        e.preventDefault();
+        window.scrollTo({ top: tgt.offsetTop - 70, behavior: 'smooth' });
+        history.replaceState(null, "", "#" + id);
+      }
+    });
+  });
+  $$(".phase-card").forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.jump;
+      const tgt = document.getElementById(id);
+      if (tgt) window.scrollTo({ top: tgt.offsetTop - 70, behavior: 'smooth' });
+    });
+  });
+  // Scroll spy
+  const ids = $$("#nav a").map(a => a.dataset.target);
+  const map = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+  function onScroll() {
+    let current = ids[0];
+    const y = window.scrollY + 100;
+    for (const id of ids) {
+      const el = map[id];
+      if (el && el.offsetTop <= y) current = id;
+    }
+    $$("#nav a").forEach(a => a.classList.toggle('active', a.dataset.target === current));
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  renderMeta();
+  renderRoadmap();
+  renderRoles();
+  renderSteps("#timetableSteps", sopData.timetable, "tt");
+  renderSteps("#urgentSteps", sopData.urgent, "ur");
+  renderPreEnrol();
+  renderSteps("#commsSteps", sopData.comms, "cm");
+  renderSteps("#t24Steps", sopData.t24, "t24");
+  renderArtefacts();
+  renderLadder();
+  renderTriggers();
+  renderTools();
+  renderRecords();
+  renderApproval();
+
+  bindChecks();
+  bindRoleFilter();
+  bindSearch();
+  bindRoadmap();
+  bindNav();
+  applyChecks();
+  applyFilters();
+}
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
